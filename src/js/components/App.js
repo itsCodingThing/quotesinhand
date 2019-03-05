@@ -47,26 +47,36 @@ let RenderQuotes = qoute => {
   );
 };
 
-export default () => {
-  let [qoute, setQuote] = useState({});
+export default class App extends React.Component {
+  state = {
+    quote: {}
+  };
 
-  function changeQoute() {
+  componentDidMount() {
     getQuotes(10).then(res => {
-      setQuote({ ...res });
+      this.setState(() => ({ quote: res }));
     });
   }
 
-  return (
-    <div className="container d-flex align-items-center justify-content-center">
-      <div className="wrapper text-center">
-        <h1 className="text-center">Quotes in hands</h1>
-        <blockquote className="blockquote text-right">
-          <RenderQuotes {...qoute} />
-        </blockquote>
-        <button className="btn btn-primary" onClick={changeQoute}>
-          Generate
-        </button>
+  changeQoute = () => {
+    getQuotes(10).then(res => {
+      this.setState(() => ({ quote: res }));
+    });
+  };
+
+  render() {
+    return (
+      <div className="container d-flex align-items-center justify-content-center">
+        <div className="wrapper text-center">
+          <h1 className="text-center">Quotes in hands</h1>
+          <blockquote className="blockquote text-right">
+            <RenderQuotes {...this.state.quote} />
+          </blockquote>
+          <button className="btn btn-primary" onClick={this.changeQoute}>
+            Generate
+          </button>
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
