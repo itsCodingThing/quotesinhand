@@ -2,33 +2,14 @@ import React from "react";
 import axios from "axios";
 import { RenderFooter, RenderQuotes } from "./Render";
 
-function getRandomInt(max) {
-  return Math.floor(Math.random() * Math.floor(max));
-}
-
-async function getQuotes(num) {
+async function getQuotes() {
   let quote;
-  let n = getRandomInt(num);
 
-  quote = await axios
-    .get(
-      `http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=${n}`
-    )
-    .then(res => {
-      let { data } = res;
-      if (data.length > 1) {
-        let randomQuote = getRandomInt(data.length);
-        return {
-          title: data[randomQuote].title,
-          content: data[randomQuote].content
-        };
-      } else {
-        return {
-          title: data[0].title,
-          content: data[0].content
-        };
-      }
-    });
+  quote = await axios.get("https://node-quote.herokuapp.com/").then(res => {
+    console.log(res);
+    let { data } = res;
+    return data;
+  });
 
   return quote;
 }
@@ -39,13 +20,13 @@ export default class App extends React.Component {
   };
 
   componentDidMount() {
-    getQuotes(10).then(res => {
+    getQuotes().then(res => {
       this.setState(() => ({ quote: res }));
     });
   }
 
   changeQuote = () => {
-    getQuotes(10).then(res => {
+    getQuotes().then(res => {
       this.setState(() => ({ quote: res }));
     });
   };
