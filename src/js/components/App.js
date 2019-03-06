@@ -1,16 +1,16 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React from "react";
 import axios from "axios";
-// url: `http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=${n}`
+import { RenderFooter, RenderQuotes } from "./Render";
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
 }
 
 async function getQuotes(num) {
-  let qoute;
+  let quote;
   let n = getRandomInt(num);
 
-  qoute = await axios
+  quote = await axios
     .get(
       `http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=${n}`
     )
@@ -30,22 +30,8 @@ async function getQuotes(num) {
       }
     });
 
-  return qoute;
+  return quote;
 }
-
-let RenderQuotes = qoute => {
-  console.log(qoute.content);
-  console.log(qoute.title);
-
-  return (
-    <Fragment>
-      {qoute.content}
-      <footer className="blockquote-footer" id="qoute-title">
-        {qoute.title}
-      </footer>
-    </Fragment>
-  );
-};
 
 export default class App extends React.Component {
   state = {
@@ -68,9 +54,10 @@ export default class App extends React.Component {
     return (
       <div className="container d-flex align-items-center justify-content-center">
         <div className="wrapper text-center">
-          <h1 className="text-center">Quotes in hands</h1>
-          <blockquote className="blockquote text-right">
+          <h1 className="text-center">Quotes in Hands</h1>
+          <blockquote className="blockquote text-center">
             <RenderQuotes {...this.state.quote} />
+            <RenderFooter {...this.state.quote} />
           </blockquote>
           <button className="btn btn-primary" onClick={this.changeQoute}>
             Generate
