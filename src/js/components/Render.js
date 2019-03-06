@@ -8,11 +8,9 @@ function getMarkUp(markup) {
 
 let RenderFooter = quote => {
   return (
-    <footer
-      className="blockquote-footer text-right"
-      id="qoute-title"
-      dangerouslySetInnerHTML={getMarkUp(quote.title)}
-    />
+    <footer className="blockquote-footer text-right" id="qoute-title">
+      {quote.title}
+    </footer>
   );
 };
 

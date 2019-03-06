@@ -44,7 +44,7 @@ export default class App extends React.Component {
     });
   }
 
-  changeQoute = () => {
+  changeQuote = () => {
     getQuotes(10).then(res => {
       this.setState(() => ({ quote: res }));
     });
@@ -59,8 +59,8 @@ export default class App extends React.Component {
             <RenderQuotes {...this.state.quote} />
             <RenderFooter {...this.state.quote} />
           </blockquote>
-          <button className="btn btn-primary" onClick={this.changeQoute}>
-            Generate
+          <button className="btn btn-primary" onClick={this.changeQuote}>
+            Next Quote
           </button>
         </div>
       </div>
