@@ -13,6 +13,7 @@
     "axios": "^0.18.0",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
+    "react-loader-spinner": "^2.3.0",
     "react-transition-group": "^2.6.0",
     "styled-jsx": "^3.2.1"
   },
