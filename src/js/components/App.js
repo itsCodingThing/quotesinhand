@@ -20,7 +20,7 @@ let Quote = ({ content, showLoader }) => {
   console.log(content);
 
   if (showLoader) {
-    return <Loader type="Bars" color="#008000" height="100" width="100" />;
+    return <Loader type="Bars" color="#6927ff" height="100" width="100" />;
   } else {
     return (
       <React.Fragment>
@@ -63,8 +63,8 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <div className="container d-flex flex-column justify-content-center">
-        <h1 className="text-center">Quotes in Hands</h1>
+      <div className="container d-flex flex-column">
+        <h1 className="header text-center">Quotes in Hands</h1>
         <div className="wrapper text-center">
           <blockquote className="blockquote text-center">
             <Quote
@@ -73,7 +73,7 @@ export default class App extends React.Component {
             />
           </blockquote>
           <button
-            className="btn btn-primary"
+            className="btn btn-primary btn-sm"
             disabled={this.state.disableBtn}
             onClick={this.changeQuote}
           >
@@ -82,10 +82,17 @@ export default class App extends React.Component {
         </div>
 
         <style jsx>{`
+          .container {
+            padding-top: 5rem;
+          }
           .wrapper {
             height: 50vh;
             padding-top: 5rem;
             padding-bottom: 5rem;
+          }
+
+          .header {
+            font-family: "Playfair Display", serif;
           }
         `}</style>
       </div>
