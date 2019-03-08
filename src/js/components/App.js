@@ -86,7 +86,6 @@ export default class App extends React.Component {
             padding-top: 5rem;
           }
           .wrapper {
-            height: 50vh;
             padding-top: 5rem;
             padding-bottom: 5rem;
           }
