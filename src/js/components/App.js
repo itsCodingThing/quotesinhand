@@ -72,19 +72,44 @@ export default class App extends React.Component {
               showLoader={this.state.showLoader}
             />
           </blockquote>
-          <button
-            className="btn btn-primary btn-sm"
+          <span
+            className="next"
             disabled={this.state.disableBtn}
             onClick={this.changeQuote}
           >
-            Next Quote
-          </button>
+            Next Quote >
+          </span>
         </div>
+        <footer className="mt-auto text-center">
+          <div className="innerbox">
+            <p>
+              created by{" "}
+              <a href="https://itsCodingThing.now.sh/" target="__blank">
+                itsCodingThing
+              </a>{" "}
+              powered by{" "}
+              <a href="https://quotesondesign.com/" target="__blank">
+                QuotesOnDesign
+              </a>
+              .
+            </p>
+          </div>
+        </footer>
 
         <style jsx>{`
           .container {
             padding-top: 5rem;
+            height: 100vh;
           }
+
+          .next {
+            background-color: transparent;
+            border-radius: none;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.2rem;
+          }
+
           .wrapper {
             padding-top: 5rem;
             padding-bottom: 5rem;
