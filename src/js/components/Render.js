@@ -15,7 +15,31 @@ let RenderFooter = quote => {
 };
 
 let RenderQuotes = quote => {
-  return <div dangerouslySetInnerHTML={getMarkUp(quote.content)} />;
+  return (
+    <React.Fragment>
+      <div
+        className="quote"
+        dangerouslySetInnerHTML={getMarkUp(quote.content)}
+      />
+      <style jsx>{`
+        .quote {
+          animation: fadeInRight 1s ease-out;
+        }
+
+        @keyframes fadeInRight {
+          from {
+            opacity: 0;
+            transform: translateX(-50px);
+          }
+
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+      `}</style>
+    </React.Fragment>
+  );
 };
 
 export { RenderFooter, RenderQuotes };

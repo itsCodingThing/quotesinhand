@@ -23,10 +23,10 @@ let Quote = ({ content, showLoader }) => {
     return <Loader type="Bars" color="#6927ff" height="100" width="100" />;
   } else {
     return (
-      <React.Fragment>
+      <div className="box">
         <RenderQuotes {...content} />
         <RenderFooter {...content} />
-      </React.Fragment>
+      </div>
     );
   }
 };
