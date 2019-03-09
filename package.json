@@ -1,0 +1,43 @@
+{
+  "name": "random-quotes",
+  "version": "1.0.0",
+  "description": "a random quotes genrater",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack-dev-server",
+    "start": "webpack",
+    "now-build": "webpack"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.0.0",
+    "axios": "^0.18.0",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
+    "react-loader-spinner": "^2.3.0",
+    "react-transition-group": "^2.6.0",
+    "styled-jsx": "^3.2.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-proposal-class-properties": "^7.3.4",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.4",
+    "css-loader": "^1.0.0",
+    "html-webpack-plugin": "^3.2.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.9"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/itsCodingThing/random-quotes.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/itsCodingThing/random-quotes/issues"
+  },
+  "homepage": "https://github.com/itsCodingThing/random-quotes#readme"
+}
