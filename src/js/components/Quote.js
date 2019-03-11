@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Quote from "./Render";
-import { getQuotes } from "../utils/fetchQuotes";
+import { getQuotes } from "../utils/utils";
 
 let BlockQuote = ({ quote, showLoader }) => (
   <blockquote className="blockquote text-center">
@@ -10,15 +10,20 @@ let BlockQuote = ({ quote, showLoader }) => (
 
 export default class QuoteGen extends Component {
   state = {
-    quote: {},
+    quote: [{}],
+    nextQ: {},
     showLoader: true,
     disableBtn: true
   };
 
   componentDidMount() {
     getQuotes().then(res => {
-      this.setState(() => ({ quote: res }));
-      this.toggleLoader();
+      this.setState(prevState => ({
+        quote: [...prevState.quote, res],
+        nextQ: res,
+        showLoader: !prevState.showLoader,
+        disableBtn: !prevState.disableBtn
+      }));
     });
   }
 
@@ -31,26 +36,34 @@ export default class QuoteGen extends Component {
 
   changeQuote = () => {
     this.toggleLoader();
-
     getQuotes().then(res => {
-      this.setState(() => ({ quote: res }));
-      this.toggleLoader();
+      this.setState(({ quote, showLoader, disableBtn }) => ({
+        quote: [...quote, res],
+        nextQ: res,
+        showLoader: !showLoader,
+        disableBtn: !disableBtn
+      }));
     });
   };
-  render() {
-    let { quote, showLoader, disableBtn } = this.state;
 
+  render() {
+    let { quote, showLoader, disableBtn, nextQ } = this.state;
+    console.log(quote);
     return (
       <div className="wrapper text-center">
-        <BlockQuote quote={quote} showLoader={showLoader} />
-        <button className="btn btn-primary btn-sm">Prev Quote</button>
-        <button
-          className="btn btn-primary btn-sm"
-          disabled={disableBtn}
-          onClick={this.changeQuote}
-        >
-          Next Quote
-        </button>
+        <BlockQuote quote={nextQ} showLoader={showLoader} />
+        <div className="buttonBox d-flex justify-content-around">
+          <button className="btn btn-primary btn-sm" disabled={disableBtn}>
+            Prev
+          </button>
+          <button
+            className="btn btn-primary btn-sm"
+            disabled={disableBtn}
+            onClick={this.changeQuote}
+          >
+            Next
+          </button>
+        </div>
         <style jsx>{`
           .wrapper {
             padding-top: 5rem;

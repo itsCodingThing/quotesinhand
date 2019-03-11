@@ -9,9 +9,11 @@ function getMarkUp(markup) {
 
 function RenderFooter(quote) {
   return (
-    <footer className="blockquote-footer text-right" id="qoute-title">
-      {quote.title}
-    </footer>
+    <footer
+      className="blockquote-footer text-right"
+      id="qoute-title"
+      dangerouslySetInnerHTML={getMarkUp(quote.title)}
+    />
   );
 }
 
