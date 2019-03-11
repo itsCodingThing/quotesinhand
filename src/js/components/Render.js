@@ -1,4 +1,5 @@
 import React from "react";
+import Loader from "react-loader-spinner";
 
 function getMarkUp(markup) {
   return {
@@ -6,15 +7,15 @@ function getMarkUp(markup) {
   };
 }
 
-let RenderFooter = quote => {
+function RenderFooter(quote) {
   return (
     <footer className="blockquote-footer text-right" id="qoute-title">
       {quote.title}
     </footer>
   );
-};
+}
 
-let RenderQuotes = quote => {
+function RenderQuotes(quote) {
   return (
     <React.Fragment>
       <div
@@ -40,6 +41,19 @@ let RenderQuotes = quote => {
       `}</style>
     </React.Fragment>
   );
-};
+}
 
-export { RenderFooter, RenderQuotes };
+export default function Quote({ content, showLoader }) {
+  console.log(content);
+
+  if (showLoader) {
+    return <Loader type="Bars" color="#6927ff" height="100" width="100" />;
+  } else {
+    return (
+      <div className="box">
+        <RenderQuotes {...content} />
+        <RenderFooter {...content} />
+      </div>
+    );
+  }
+}

@@ -1,35 +1,7 @@
 import React from "react";
-import axios from "axios";
-import Loader from "react-loader-spinner";
-import { RenderFooter, RenderQuotes } from "./Render";
-
-async function getQuotes() {
-  let quote;
-
-  quote = await axios
-    .get("https://node-quote.herokuapp.com/quote/")
-    .then(res => {
-      let { data } = res;
-      return data;
-    });
-
-  return quote;
-}
-
-let Quote = ({ content, showLoader }) => {
-  console.log(content);
-
-  if (showLoader) {
-    return <Loader type="Bars" color="#6927ff" height="100" width="100" />;
-  } else {
-    return (
-      <div className="box">
-        <RenderQuotes {...content} />
-        <RenderFooter {...content} />
-      </div>
-    );
-  }
-};
+import Quote from "./Render";
+import Container from "react-bootstrap/Container";
+import { getQuotes } from "../utils/fetchQuotes";
 
 export default class App extends React.Component {
   state = {
@@ -62,19 +34,17 @@ export default class App extends React.Component {
   };
 
   render() {
+    let { quote, showLoader, disableBtn } = this.state;
     return (
-      <div className="container d-flex flex-column">
+      <Container className="d-flex flex-column">
         <h1 className="header text-center">Quotes in Hands</h1>
         <div className="wrapper text-center">
           <blockquote className="blockquote text-center">
-            <Quote
-              content={this.state.quote}
-              showLoader={this.state.showLoader}
-            />
+            <Quote content={quote} showLoader={showLoader} />
           </blockquote>
           <button
             className="btn btn-primary btn-sm"
-            disabled={this.state.disableBtn}
+            disabled={disableBtn}
             onClick={this.changeQuote}
           >
             Next Quote
@@ -82,9 +52,6 @@ export default class App extends React.Component {
         </div>
 
         <style jsx>{`
-          .container {
-            padding-top: 5rem;
-          }
           .wrapper {
             padding-top: 5rem;
             padding-bottom: 5rem;
@@ -94,7 +61,7 @@ export default class App extends React.Component {
             font-family: "Playfair Display", serif;
           }
         `}</style>
-      </div>
+      </Container>
     );
   }
 }
