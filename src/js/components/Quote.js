@@ -13,7 +13,8 @@ export default class QuoteGen extends Component {
     quote: [{}],
     nextQ: {},
     showLoader: true,
-    disableBtn: true
+    disableBtn: true,
+    index: 0
   };
 
   componentDidMount() {
@@ -22,7 +23,8 @@ export default class QuoteGen extends Component {
         quote: [...prevState.quote, res],
         nextQ: res,
         showLoader: !prevState.showLoader,
-        disableBtn: !prevState.disableBtn
+        disableBtn: !prevState.disableBtn,
+        index: prevState.quote.length
       }));
     });
   }
@@ -41,9 +43,22 @@ export default class QuoteGen extends Component {
         quote: [...quote, res],
         nextQ: res,
         showLoader: !showLoader,
-        disableBtn: !disableBtn
+        disableBtn: !disableBtn,
+        index: quote.length - 1
       }));
     });
+  };
+
+  prevQuote = () => {
+    let quotes = this.state.quote;
+    if (this.state.index > 0) {
+      this.setState(prevState => {
+        return {
+          nextQ: quotes[prevState.index],
+          index: prevState.index - 1
+        };
+      });
+    }
   };
 
   render() {
@@ -53,7 +68,11 @@ export default class QuoteGen extends Component {
       <div className="wrapper text-center">
         <BlockQuote quote={nextQ} showLoader={showLoader} />
         <div className="buttonBox d-flex justify-content-around">
-          <button className="btn btn-primary btn-sm" disabled={disableBtn}>
+          <button
+            className="btn btn-primary btn-sm"
+            onClick={this.prevQuote}
+            disabled={disableBtn}
+          >
             Prev
           </button>
           <button
@@ -73,6 +92,13 @@ export default class QuoteGen extends Component {
           button {
             margin-right: 2rem;
             margin-left: 2rem;
+          }
+
+          @media (min-width: 992px) {
+            .wrapper {
+              padding-right: 5rem;
+              padding-left: 5rem;
+            }
           }
         `}</style>
       </div>
