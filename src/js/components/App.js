@@ -1,11 +1,13 @@
 import React from "react";
-import Container from "react-bootstrap/Container";
 import QuoteGen from "./Quote";
 export default class App extends React.Component {
   render() {
     return (
-      <Container className="d-flex flex-column">
-        <h1 className="header text-center">Quotes in Hands</h1>
+      <div className="container d-flex flex-column main">
+        <header>
+          <h1 className="hero text-center">Quotes in Hands</h1>
+        </header>
+
         <QuoteGen />
         <footer className="mt-auto text-center">
           <div className="innerbox">
@@ -23,11 +25,19 @@ export default class App extends React.Component {
           </div>
         </footer>
         <style jsx>{`
-          .header {
+          .hero {
             font-family: "Playfair Display", serif;
           }
+
+          header {
+            margin-bottom: 2rem;
+          }
+
+          .main {
+            height: 100vh;
+          }
         `}</style>
-      </Container>
+      </div>
     );
   }
 }

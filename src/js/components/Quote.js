@@ -85,8 +85,10 @@ export default class QuoteGen extends Component {
         </div>
         <style jsx>{`
           .wrapper {
-            padding-top: 5rem;
-            padding-bottom: 5rem;
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
           }
 
           button {
