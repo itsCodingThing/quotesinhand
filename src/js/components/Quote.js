@@ -14,7 +14,7 @@ export default class QuoteGen extends Component {
     nextQ: {},
     showLoader: true,
     disableBtn: true,
-    index: 0
+    currentIndex: 0
   };
 
   componentDidMount() {
@@ -24,7 +24,7 @@ export default class QuoteGen extends Component {
         nextQ: res,
         showLoader: !prevState.showLoader,
         disableBtn: !prevState.disableBtn,
-        index: prevState.quote.length
+        currentIndex: prevState.quote.length
       }));
     });
   }
@@ -44,18 +44,34 @@ export default class QuoteGen extends Component {
         nextQ: res,
         showLoader: !showLoader,
         disableBtn: !disableBtn,
-        index: quote.length - 1
+        currentIndex: quote.length
       }));
     });
   };
 
-  prevQuote = () => {
-    let quotes = this.state.quote;
-    if (this.state.index > 0) {
+  nextQuote = () => {
+    let { quote, currentIndex } = this.state;
+    console.log(currentIndex, quote.length);
+
+    if (currentIndex < quote.length) {
       this.setState(prevState => {
         return {
-          nextQ: quotes[prevState.index],
-          index: prevState.index - 1
+          nextQ: quote[prevState.currentIndex],
+          currentIndex: prevState.currentIndex + 1
+        };
+      });
+    } else {
+      this.changeQuote();
+    }
+  };
+
+  prevQuote = () => {
+    let quotes = this.state.quote;
+    if (this.state.currentIndex > 0) {
+      this.setState(prevState => {
+        return {
+          nextQ: quotes[prevState.currentIndex],
+          currentIndex: prevState.currentIndex - 1
         };
       });
     }
@@ -78,7 +94,7 @@ export default class QuoteGen extends Component {
           <button
             className="btn btn-primary btn-sm"
             disabled={disableBtn}
-            onClick={this.changeQuote}
+            onClick={this.nextQuote}
           >
             Next
           </button>
