@@ -12,11 +12,11 @@ export default class App extends React.Component {
         <footer className="mt-auto text-center">
           <div className="innerbox">
             <p>
-              created by{" "}
+              created by
               <a href="https://itsCodingThing.now.sh/" target="__blank">
                 itsCodingThing
-              </a>{" "}
-              powered by{" "}
+              </a>
+              powered by
               <a href="https://quotesondesign.com/" target="__blank">
                 QuotesOnDesign
               </a>
