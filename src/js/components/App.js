@@ -5,18 +5,20 @@ function App() {
   return (
     <div className="container d-flex flex-column main">
       <header>
-        <h1 className="hero text-center">Quotes in Hands</h1>
+        <h1 className="hero text-center">
+          Quotes in Hand <span className="emoji">🙌</span>
+        </h1>
       </header>
 
       <QuoteGen />
       <footer className="mt-auto text-center">
         <div className="innerbox">
           <p>
-            created by
+            created by{" "}
             <a href="https://itsCodingThing.now.sh/" target="__blank">
               itsCodingThing
-            </a>
-            powered by
+            </a>{" "}
+            powered by{" "}
             <a href="https://quotesondesign.com/" target="__blank">
               QuotesOnDesign
             </a>
@@ -31,6 +33,11 @@ function App() {
 
         header {
           margin-bottom: 2rem;
+        }
+
+        a {
+          text-decoration: none;
+          color: whitesmoke;
         }
 
         .main {

@@ -11,17 +11,24 @@ function getMarkUp(markup) {
 
 function RenderFooter(quote) {
   return (
-    <footer
-      className="blockquote-footer text-right"
-      id="qoute-title"
-      dangerouslySetInnerHTML={getMarkUp(quote.title)}
-    />
+    <>
+      <footer
+        className="blockquote-footer text-right"
+        id="qoute-title"
+        dangerouslySetInnerHTML={getMarkUp(quote.title)}
+      />
+      <style jsx>{`
+        .blockquote-footer {
+          color: black;
+        }
+      `}</style>
+    </>
   );
 }
 
 function RenderQuotes(quote) {
   return (
-    <React.Fragment>
+    <>
       <div className="quote" dangerouslySetInnerHTML={getMarkUp(quote.content)} />
       <style jsx>{`
         .quote {
@@ -40,7 +47,7 @@ function RenderQuotes(quote) {
           }
         }
       `}</style>
-    </React.Fragment>
+    </>
   );
 }
 
@@ -90,11 +97,8 @@ function QuoteGen() {
     <div className="wrapper text-center">
       <BlockQuote quote={quote} showLoader={showLoader} />
       <div className="buttonBox d-flex justify-content-around">
-        <button className="btn btn-primary btn-sm" onClick={() => console.log("prev btn")} disabled={disableBtn}>
-          Prev
-        </button>
-        <button className="btn btn-primary btn-sm" disabled={disableBtn} onClick={changeQuote}>
-          Next
+        <button className="btn btn-success btn-md" disabled={disableBtn} onClick={changeQuote}>
+          Change Quote
         </button>
       </div>
       <style jsx>{`
