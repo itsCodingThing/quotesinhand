@@ -2,8 +2,8 @@ import axios from "axios";
 
 async function getQuotes() {
   try {
-    let quote = await axios.get("https://node-quote.herokuapp.com/quote/");
-    return quote.data;
+    const { data } = await axios.get("https://node-quote.herokuapp.com/quote/");
+    return data;
   } catch (error) {
     return {
       title: "Ooopss!!!",
