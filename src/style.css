@@ -1,13 +1,28 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
 body {
+  font-size: 20px;
   background: linear-gradient(to right, #ff6a00, #ee0979);
 }
 
 .hero {
+  font-size: 3rem;
   font-family: "Playfair Display", serif;
 }
 
-header {
-  margin-bottom: 2rem;
+.main header {
+  width: 100%;
+  text-align: center;
+}
+
+#emoji {
+  font-size: 3rem;
 }
 
 footer a {
@@ -17,25 +32,70 @@ footer a {
 
 .main {
   height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .wrapper {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+  width: 100%;
+  height: 50%;
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.wrapper button {
-  margin-right: 2rem;
-  margin-left: 2rem;
+.blockquote {
+  padding-top: 2rem;
 }
 
 .blockquote-footer {
+  padding-top: 2rem;
+  padding-bottom: 1rem;
   color: black;
+  text-align: end;
+  animation: fadeInRight 1s ease-out;
+}
+
+.main > footer {
+  margin-top: auto;
+}
+
+footer > .innerbox {
+  text-align: center;
+  padding-bottom: 1rem;
+}
+
+.loader {
+  width: 100%;
+  text-align: center;
+  font-size: 1.5rem;
+  padding: 2rem 0;
+}
+
+.btn {
+  border: none;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0);
+  color: black;
+  border: 2px solid #4caf50; /* Green */
+  transition-duration: 0.4s;
+}
+
+.btn:hover {
+  background-color: #4caf50; /* Green */
+  color: white;
+}
+
+.btn:focus {
+  outline: none;
 }
 
 .quote {
+  text-align: center;
   animation: fadeInRight 1s ease-out;
 }
 

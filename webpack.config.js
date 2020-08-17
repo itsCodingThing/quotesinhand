@@ -3,6 +3,7 @@ const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserJSPlugin = require("terser-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 const env = process.env.NODE_ENV || "production";
 
@@ -23,6 +24,7 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "css/[name].css",
     }),
+    new CleanWebpackPlugin(),
   ],
   module: {
     rules: [
@@ -38,6 +40,9 @@ module.exports = {
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
+            options: {
+              hmr: env === "development",
+            },
           },
           { loader: "css-loader" },
         ],
