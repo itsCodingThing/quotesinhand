@@ -1,9 +1,59 @@
 body {
-  background: #ee0979; /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #ff6a00, #ee0979); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to right,
-    #ff6a00,
-    #ee0979
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, #ff6a00, #ee0979);
+}
+
+.hero {
+  font-family: "Playfair Display", serif;
+}
+
+header {
+  margin-bottom: 2rem;
+}
+
+footer a {
+  text-decoration: none;
+  color: whitesmoke;
+}
+
+.main {
+  height: 100vh;
+}
+
+.wrapper {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.wrapper button {
+  margin-right: 2rem;
+  margin-left: 2rem;
+}
+
+.blockquote-footer {
+  color: black;
+}
+
+.quote {
+  animation: fadeInRight 1s ease-out;
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (min-width: 992px) {
+  .wrapper {
+    padding-right: 5rem;
+    padding-left: 5rem;
+  }
 }

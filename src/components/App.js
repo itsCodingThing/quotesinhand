@@ -26,24 +26,6 @@ function App() {
           </p>
         </div>
       </footer>
-      <style jsx>{`
-        .hero {
-          font-family: "Playfair Display", serif;
-        }
-
-        header {
-          margin-bottom: 2rem;
-        }
-
-        a {
-          text-decoration: none;
-          color: whitesmoke;
-        }
-
-        .main {
-          height: 100vh;
-        }
-      `}</style>
     </div>
   );
 }

@@ -1,18 +1,27 @@
 const htmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const TerserJSPlugin = require("terser-webpack-plugin");
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
-const env = process.env.NODE_ENV;
+const env = process.env.NODE_ENV || "production";
 
 module.exports = {
   mode: env,
-  entry: ["./src/js/index.js"],
+  entry: ["./src/index.js"],
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "bundle.js",
+    filename: "js/bundle.js",
+  },
+  optimization: {
+    minimizer: [new TerserJSPlugin(), new OptimizeCSSAssetsPlugin()],
   },
   plugins: [
     new htmlWebpackPlugin({
-      template: "./src/index.html",
+      template: path.resolve(__dirname, "./src/public/index.html"),
+    }),
+    new MiniCssExtractPlugin({
+      filename: "css/[name].css",
     }),
   ],
   module: {
@@ -26,7 +35,12 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [{ loader: "style-loader" }, { loader: "css-loader" }],
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+          },
+          { loader: "css-loader" },
+        ],
       },
     ],
   },
