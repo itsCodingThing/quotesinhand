@@ -14,7 +14,7 @@ function App() {
       <footer>
         <div className="innerbox">
           created by{" "}
-          <a href="https://itsCodingThing.now.sh/" target="__blank">
+          <a href="https://itsCodingThing.vercel.app/" target="__blank">
             itsCodingThing
           </a>
           .
