@@ -2,34 +2,17 @@
   "name": "quotesinhands",
   "version": "1.0.0",
   "description": "a random quotes generator",
-  "main": "index.js",
   "scripts": {
-    "server:prod": "webpack-dev-server",
-    "server:dev": "cross-env NODE_ENV=development webpack-dev-server",
-    "start": "webpack",
-    "now-build": "webpack"
+    "start": "parcel serve ./src/index.html",
+    "build": "PARCEL_BUNDLE_ANALYZER=1 parcel build ./src/index.html",
+    "now-build": "parcel build ./src/index.html"
   },
   "dependencies": {
-    "react": "^16.8.3",
-    "react-dom": "^16.8.3"
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.1.2",
-    "@babel/preset-env": "^7.1.0",
-    "@babel/preset-react": "^7.0.0",
-    "babel-loader": "^8.0.4",
-    "clean-webpack-plugin": "^3.0.0",
-    "cross-env": "^7.0.2",
-    "css-loader": "^1.0.0",
-    "file-loader": "^6.0.0",
-    "html-webpack-plugin": "^3.2.0",
-    "mini-css-extract-plugin": "^0.10.0",
-    "optimize-css-assets-webpack-plugin": "^5.0.3",
-    "style-loader": "^0.23.1",
-    "terser-webpack-plugin": "^4.1.0",
-    "webpack": "^4.20.2",
-    "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "^3.1.9"
+    "parcel": "^2.0.0-beta.1"
   },
   "repository": {
     "type": "git",
