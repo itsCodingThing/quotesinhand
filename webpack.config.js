@@ -47,6 +47,15 @@ module.exports = {
           { loader: "css-loader" },
         ],
       },
+      {
+        test: /\.ico$/,
+        use: {
+          loader: "file-loader",
+          options: {
+            name: "assests/[name].[ext]",
+          },
+        },
+      },
     ],
   },
 };

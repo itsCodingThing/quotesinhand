@@ -12,7 +12,9 @@ function Quote({ quote, showLoader }) {
   } else {
     return (
       <blockquote className="blockquote">
-        <div className="quote">{quote.content}</div>
+        <div className="quote">
+          <p>{quote.content}</p>
+        </div>
         <footer className="blockquote-footer" id="qoute-title">
           <small>-{quote.title}</small>
         </footer>
