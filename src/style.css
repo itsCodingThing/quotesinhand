@@ -10,11 +10,11 @@
 body {
   font-size: 20px;
   background: linear-gradient(to right, #ff6a00, #ee0979);
+  font-family: "Playfair Display", serif;
 }
 
 .hero {
   font-size: 3rem;
-  font-family: "Playfair Display", serif;
 }
 
 .main header {
@@ -40,8 +40,7 @@ footer a {
 
 .wrapper {
   width: 100%;
-  height: 50%;
-  padding: 0 5rem;
+  padding: 0 4rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -80,27 +79,45 @@ footer > .innerbox {
 
 .btn {
   border: none;
-  font-size: 1rem;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
+  width: 3rem;
+  height: 3rem;
+  background-image: url(./assests/arrows_rotate.svg);
+  transform: scaleX(-1);
   background-color: rgba(0, 0, 0, 0);
-  color: black;
-  border: 2px solid #4caf50; /* Green */
+  cursor: pointer;
+  border: 2px solid black; /* Green */
   transition-duration: 0.4s;
   border-radius: 2px;
 }
-
+/* #4caf50 */
 .btn:hover {
-  background-color: #4caf50; /* Green */
+  background-color: yellow; /* Green */
   color: white;
 }
 
-.btn:focus {
-  outline: none;
+.btn-circle {
+  border-radius: 100%;
+}
+
+.rotate {
+  animation: rotation 1s ease-in-out infinite;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0) scaleX(-1);
+  }
+
+  to {
+    transform: rotate(360deg) scaleX(-1);
+  }
 }
 
 .quote {
   text-align: center;
+}
+
+.fadeInRight {
   animation: fadeInRight 1s ease-out;
 }
 
