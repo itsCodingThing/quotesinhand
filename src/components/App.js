@@ -5,9 +5,10 @@ function App() {
   return (
     <div className="main">
       <header>
-        <h1 className="hero">
-          Quotes in Hand <span id="emoji">🙌</span>
-        </h1>
+        <h1 className="hero">Quotes in Hand</h1>
+        <div id="emoji-container">
+          <div id="emoji"></div>
+        </div>
       </header>
 
       <QuoteGen />

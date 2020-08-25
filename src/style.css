@@ -9,7 +9,7 @@
 
 body {
   font-size: 20px;
-  background: linear-gradient(to right, #ff6a00, #ee0979);
+  background-color: #ffaa71;
   font-family: "Playfair Display", serif;
 }
 
@@ -23,13 +23,22 @@ body {
   margin-bottom: 1rem;
 }
 
+#emoji-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 #emoji {
-  font-size: 3rem;
+  width: 5rem;
+  height: 5rem;
+  border: none;
+  background-image: url(./assests/handsup.svg);
 }
 
 footer a {
   text-decoration: none;
-  color: whitesmoke;
+  color: blueviolet;
 }
 
 .main {
@@ -62,6 +71,7 @@ footer a {
 
 .main > footer {
   margin-top: auto;
+  padding-top: 5rem;
 }
 
 footer > .innerbox {
