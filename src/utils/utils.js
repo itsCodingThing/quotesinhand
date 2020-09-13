@@ -4,12 +4,12 @@ export function getQuotes() {
       return response.json();
     })
     .then((data) => {
-      return data;
-    })
-    .catch(() => {
-      return {
-        title: "Ooopss!!!",
-        content: "no quotes available at this moment 🙏",
-      };
+      const { ok, response } = data;
+
+      if (ok) {
+        return { title: response.title, content: response.content };
+      } else {
+        return { title: "-", content: "There is problem please try again" };
+      }
     });
 }

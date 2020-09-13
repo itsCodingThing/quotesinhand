@@ -41,8 +41,8 @@ function QuoteGen() {
 
   const changeQuote = () => {
     setState({ loading: true, disableBtn: true, quote });
-    getQuotes().then((res) => {
-      setState({ quote: { ...res }, loading: false, disableBtn: false });
+    getQuotes().then(({ title, content }) => {
+      setState({ quote: { title, content }, loading: false, disableBtn: false });
     });
   };
 
