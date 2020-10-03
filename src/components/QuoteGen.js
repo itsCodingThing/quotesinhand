@@ -10,7 +10,7 @@ function Quote({ quote, loading }) {
           <p>{quote.content}</p>
         </div>
         <footer className="blockquote-footer" id="qoute-title">
-          <small>-{quote.title}</small>
+          <small> -{quote.title}</small>
         </footer>
       </blockquote>
     );
