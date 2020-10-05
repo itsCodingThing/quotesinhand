@@ -46,6 +46,17 @@ function QuoteGen() {
     });
   };
 
+  const copyToClipboard = () => {
+    navigator.clipboard
+      .writeText(quote.content)
+      .then(() => {
+        console.log("added successfully");
+      })
+      .catch(() => {
+        console.log("there is some sort of error");
+      });
+  };
+
   return (
     <div className="wrapper">
       <Quote quote={quote} loading={loading} />
@@ -56,7 +67,9 @@ function QuoteGen() {
           disabled={disableBtn}
           onClick={changeQuote}
         ></div>
-        <button className="btn btn-hover">Copy</button>
+        <button className="btn btn-hover" onClick={copyToClipboard}>
+          Copy
+        </button>
       </div>
     </div>
   );
