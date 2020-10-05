@@ -49,11 +49,15 @@ function QuoteGen() {
   return (
     <div className="wrapper">
       <Quote quote={quote} loading={loading} />
-      <div
-        className={loading ? "btn btn-circle rotate" : "btn btn-circle"}
-        disabled={disableBtn}
-        onClick={changeQuote}
-      ></div>
+
+      <div className="btn-group">
+        <div
+          className={loading ? "btn-circle rotate" : "btn-circle btn-hover"}
+          disabled={disableBtn}
+          onClick={changeQuote}
+        ></div>
+        <button className="btn btn-hover">Copy</button>
+      </div>
     </div>
   );
 }
