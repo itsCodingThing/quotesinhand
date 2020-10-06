@@ -37,6 +37,7 @@ function QuoteGen() {
     loading: false,
     disableBtn: false,
   });
+  const [copied, setCopyState] = useState(false);
   const { quote, loading, disableBtn } = state;
 
   const changeQuote = () => {
@@ -50,10 +51,15 @@ function QuoteGen() {
     navigator.clipboard
       .writeText(quote.content)
       .then(() => {
-        console.log("added successfully");
+        if (!copied) {
+          setCopyState(true);
+          setTimeout(() => {
+            setCopyState(false);
+          }, 2000);
+        }
       })
       .catch(() => {
-        console.log("there is some sort of error");
+        setCopyState(false);
       });
   };
 
@@ -67,8 +73,9 @@ function QuoteGen() {
           disabled={disableBtn}
           onClick={changeQuote}
         ></div>
+
         <button className="btn btn-hover" onClick={copyToClipboard}>
-          Copy
+          {copied ? `Copied` : `Copy`}
         </button>
       </div>
     </div>
